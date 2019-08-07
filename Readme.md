@@ -1,5 +1,5 @@
-This is an email sending server written in node.js
-To run it in your machine
+This is an email sending server written in node.js\n
+To run it in your machine\n
 git clone https://github.com/Innovator007/node-emails-sender.git
 cd node-emails-sender
 npm install
