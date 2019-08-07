@@ -30,7 +30,7 @@ function trigger_sending(user){
     var emailBody = template.generate(user).toString();
     //email-sending
     transporter.sendMail({
-      	from: 'HeadStart Hack<your-google-mail-here>',
+      	from: 'Sender Name<your-google-mail-here>',
       	to: user.email, //email address of our recipient
       	subject: '<Your-subject-here>',
       	text: '<plain-text-here>',
