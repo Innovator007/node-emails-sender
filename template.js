@@ -6,12 +6,10 @@ module.exports = {
             <head>  
             </head>
             <body>
-              <div>
-                <p>Hi ${user.name},</p>
-                <p>This is regarding your registration in our hacakthon with email : ${user.email}.</p>
-                <p>We are pleased to inform you that you have been registered succesfully!</p>
-                <p>The timings of the hackathon are as given below:-</p>
-              </div>
+                <div>
+                  <p>Hi ${user.first},</p>
+                  <p>Pleased to meet you :)</p>
+                </div>              
             </body>
             </html>
         `

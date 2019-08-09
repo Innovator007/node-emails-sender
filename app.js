@@ -5,8 +5,8 @@ const template = require('./template.js');
 
 //setting up nodemailer to send emails
 const account = {
-     user: '<your-google-mail-here>',
-     pass: '<your-google-mail-password>'
+     user: '<your-email-here>',
+     pass: '<your-passoword-here>'
 }
 var transporter = nodemailer.createTransport({
      pool: true, //keeps the server connection open
@@ -27,23 +27,27 @@ var count = 0;
 
 function trigger_sending(user){ 
     //generates html email template
-    var emailBody = template.generate(user).toString();
-    //email-sending
-    transporter.sendMail({
-      	from: 'Sender Name<your-google-mail-here>',
-      	to: user.email, //email address of our recipient
-      	subject: '<Your-subject-here>',
-      	text: '<plain-text-here>',
-      	html: emailBody,
- 	}, (error, info) => {
-    	if (error) {
-           return console.log(error);
-        }
-      	console.log('Email sent to : %s', info.accepted[0]);
-      	if(count >= sendlist.length) {
-      		 console.log("All emails have been sent in the list, you can shutdown the script using Ctrl+C");
-      	}
- 	});
+    if(user.is_email_sent && (user.is_email_sent.toLowerCase() === "yes")) {
+      console.log("Email has already been sent to: " + user.email);
+    } else {
+      var emailBody = template.generate(user).toString();
+        //email-sending
+        transporter.sendMail({
+            from: 'Sender Name<your-email-here>',
+            to: user.email, //email address of our recipient
+            subject: '<subject>',
+            text: '<plain-text-here>',
+            html: emailBody,
+      }, (error, info) => {
+          if (error) {
+               return console.log(error);
+            }
+            console.log('Email sent to : %s', info.accepted[0]);
+            if(count >= sendlist.length) {
+               console.log("All emails have been sent in the list, you can shutdown the script using Ctrl+C");
+            }
+      });
+    }
 }
 
 function set_message_delays(){
